@@ -4,53 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allied School - Humayel Campus</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333; line-height: 1.6; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333; text-align: center; }
         
-        /* Header Section */
+        /* Header */
         header { 
             background: linear-gradient(rgba(10, 79, 163, 0.9), rgba(21, 101, 192, 0.9)), 
                         url('https://drive.google.com/uc?export=view&id=13XlobCtKj4nXIMK3g82zGTG_aFGOPOEt'); 
             background-size: cover; background-position: center; color: white; padding: 60px 20px; 
-            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px; text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
         }
-        .logo { width: 120px; height: 120px; border-radius: 50%; background: white; padding: 5px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); object-fit: cover; }
-        .vision { font-size: 1.2em; font-weight: 500; margin-top: 15px; font-style: italic; color: #e3f2fd; }
+        .logo { width: 110px; height: 110px; border-radius: 50%; background: white; padding: 5px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); object-fit: cover; }
+        .vision { font-size: 1.2em; font-style: italic; color: #e3f2fd; margin-top: 10px; }
 
-        section { padding: 50px 20px; max-width: 1100px; margin: auto; text-align: center; }
-        h2 { color: #0a4fa3; margin-bottom: 30px; font-size: 2.2em; position: relative; padding-bottom: 10px; }
-        h2::after { content: ''; width: 60px; height: 4px; background: #25D366; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+        /* Sections */
+        section { padding: 40px 20px; max-width: 1000px; margin: auto; }
+        h2 { color: #0a4fa3; font-size: 2em; margin-bottom: 30px; }
 
-        /* Gallery Grid */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 20px; }
-        .gallery-grid img { width: 100%; height: 220px; object-fit: cover; border-radius: 15px; transition: 0.4s; cursor: pointer; border: 3px solid white; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .gallery-grid img:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.2); border-color: #0a4fa3; }
+        /* Wings Grid */
+        .wings { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 40px; }
+        .wing-card { background: white; padding: 25px; border-radius: 20px; width: 280px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid #0a4fa3; }
+
+        /* Gallery Button */
+        .gallery-btn { background: #0a4fa3; color: white; border: none; padding: 15px 40px; border-radius: 30px; font-size: 1.2em; cursor: pointer; transition: 0.3s; font-weight: bold; }
+        .gallery-btn:hover { background: #1565C0; transform: scale(1.05); }
+
+        /* Modal (Gallery Popup) */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
+        .modal-content { width: 90%; max-width: 1000px; margin: 50px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .modal-content img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; border: 2px solid white; }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; font-weight: bold; }
 
         /* Admission Form */
-        .form-container { background: white; max-width: 550px; margin: 40px auto; padding: 40px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); text-align: left; border: 1px solid #eee; }
-        label { font-weight: 600; color: #444; display: block; margin-bottom: 8px; }
-        input, select { width: 100%; padding: 15px; margin-bottom: 25px; border: 2px solid #f1f1f1; border-radius: 12px; font-size: 16px; box-sizing: border-box; transition: 0.3s; }
-        input:focus, select:focus { border-color: #0a4fa3; outline: none; background: #fff; }
-        .submit-btn { background: #25D366; color: white; border: none; padding: 18px; width: 100%; border-radius: 15px; font-weight: bold; cursor: pointer; font-size: 1.2em; transition: 0.3s; box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3); }
-        .submit-btn:hover { background: #128C7E; transform: scale(1.02); }
+        .form-container { background: white; max-width: 500px; margin: 40px auto; padding: 35px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: left; }
+        input, select { width: 100%; padding: 14px; margin: 10px 0 20px 0; border: 1px solid #ddd; border-radius: 12px; font-size: 16px; box-sizing: border-box; }
+        .submit-btn { background: #25D366; color: white; border: none; padding: 16px; width: 100%; border-radius: 15px; font-weight: bold; cursor: pointer; font-size: 1.1em; }
 
-        /* Footer & Contact Card */
-        .footer-card { background: #0a4fa3; color: white; padding: 50px 20px; border-radius: 40px; margin: 50px 20px; }
-        .contact-item { margin: 20px 0; font-size: 1.1em; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .contact-item a { color: white; text-decoration: none; transition: 0.3s; }
-        .contact-item a:hover { color: #25D366; }
-        .social-link { font-size: 2.5em; color: white; text-decoration: none; transition: 0.3s; }
-        .social-link:hover { color: #1877f2; transform: scale(1.1); }
-
-        .map-frame { border-radius: 25px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); margin-top: 30px; }
+        /* Footer */
+        footer { background: #0a4fa3; color: white; padding: 50px 20px; margin-top: 50px; border-top-left-radius: 40px; border-top-right-radius: 40px; }
+        .contact-info { margin: 15px 0; font-size: 1.1em; }
+        .contact-info a { color: white; text-decoration: none; margin-left: 10px; }
+        .social-icon { font-size: 2.5em; color: white; transition: 0.3s; }
+        .social-icon:hover { color: #25D366; }
+        iframe { border-radius: 20px; margin-top: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="https://drive.google.com/uc?export=view&id=1KWmwZZ0tcbRCxia-5GBIwdxWaymx4THe" alt="Allied School Logo" class="logo">
+    <img src="https://drive.google.com/uc?export=view&id=1KWmwZZ0tcbRCxia-5GBIwdxWaymx4THe" alt="Logo" class="logo">
     <h1>Allied School</h1>
     <h3>Humayel Campus</h3>
     <p class="vision">"Preparing a character-oriented generation through quality education"</p>
@@ -58,113 +63,76 @@
 
 <section>
     <h2>Academic Wings 📚</h2>
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        <div style="background: white; padding: 25px; border-radius: 20px; width: 280px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <h3 style="color: #1565C0;">Junior Wing 👶</h3>
-            <p>Playgroup, Nursery, Prep</p>
-        </div>
-        <div style="background: white; padding: 25px; border-radius: 20px; width: 280px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <h3 style="color: #1565C0;">Primary Wing 📖</h3>
-            <p>Class 1 to Class 5</p>
-        </div>
-        <div style="background: white; padding: 25px; border-radius: 20px; width: 280px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <h3 style="color: #1565C0;">Senior Wing 🎓</h3>
-            <p>Class 6 to Matric</p>
-        </div>
+    <div class="wings">
+        <div class="wing-card"><h3>Junior Wing 👶</h3><p>Playgroup to Prep</p></div>
+        <div class="wing-card"><h3>Primary Wing 📖</h3><p>Class 1 to 5</p></div>
+        <div class="wing-card"><h3>Senior Wing 🎓</h3><p>Class 6 to Matric</p></div>
     </div>
+
+    <button class="gallery-btn" onclick="openGallery()">📂 View School Gallery</button>
 </section>
 
-<section id="gallery" style="background: #fff;">
-    <h2>School Gallery 🖼️</h2>
-    <div class="gallery-grid">
-        <img src="https://drive.google.com/uc?export=view&id=1mlQIYLWdjCk0GGa0JTe0J9z7Y5I7Lm0U" alt="Gallery 1">
-        <img src="https://drive.google.com/uc?export=view&id=1rFOMzgSb0IEyhkh5U8i3VD8BoMF3l8uQ" alt="Gallery 2">
-        <img src="https://drive.google.com/uc?export=view&id=1K-2GpX0S1PnF2qi8CPO0IavkUJLmILnu" alt="Gallery 3">
-        <img src="https://drive.google.com/uc?export=view&id=1urBeW6QjGARPtCF7-ZbdFQ2tZZqAmsN5" alt="Gallery 4">
-        <img src="https://drive.google.com/uc?export=view&id=1-7kKnbMX0oWDJksnyqQ0u5qx-oR13fJy" alt="Gallery 5">
-        <img src="https://drive.google.com/uc?export=view&id=1j9wt95QHsau32NasdoCPgTH_qdjdt7ch" alt="Gallery 6">
-        <img src="https://drive.google.com/uc?export=view&id=1VbuI8_3Tp7DQyC2Uh1LNlceDbaLLrCmJ" alt="Gallery 7">
-        <img src="https://drive.google.com/uc?export=view&id=1VcOFf25CTr7mF7U5KxW4HoiFnDNUp3Vv" alt="Gallery 8">
+<div id="galleryModal" class="modal">
+    <span class="close-btn" onclick="closeGallery()">&times;</span>
+    <div class="modal-content">
+        <img src="https://drive.google.com/uc?export=view&id=1mlQIYLWdjCk0GGa0JTe0J9z7Y5I7Lm0U">
+        <img src="https://drive.google.com/uc?export=view&id=1rFOMzgSb0IEyhkh5U8i3VD8BoMF3l8uQ">
+        <img src="https://drive.google.com/uc?export=view&id=1K-2GpX0S1PnF2qi8CPO0IavkUJLmILnu">
+        <img src="https://drive.google.com/uc?export=view&id=1urBeW6QjGARPtCF7-ZbdFQ2tZZqAmsN5">
+        <img src="https://drive.google.com/uc?export=view&id=1-7kKnbMX0oWDJksnyqQ0u5qx-oR13fJy">
+        <img src="https://drive.google.com/uc?export=view&id=1j9wt95QHsau32NasdoCPgTH_qdjdt7ch">
+        <img src="https://drive.google.com/uc?export=view&id=1VbuI8_3Tp7DQyC2Uh1LNlceDbaLLrCmJ">
+        <img src="https://drive.google.com/uc?export=view&id=1VcOFf25CTr7mF7U5KxW4HoiFnDNUp3Vv">
     </div>
-</section>
+</div>
 
 <section>
     <div class="form-container">
         <h2 style="text-align: center;">Online Admission 📝</h2>
-        <label>Student Name</label>
-        <input type="text" id="stdName" placeholder="Enter full name">
-        
-        <label>Father's Name</label>
-        <input type="text" id="fName" placeholder="Enter father's name">
-        
-        <label>Required Class</label>
+        <input type="text" id="stdName" placeholder="Student Name">
+        <input type="text" id="fName" placeholder="Father's Name">
         <select id="className">
-            <option value="" disabled selected>Choose a class</option>
-            <option>Playgroup / Nursery</option>
-            <option>Primary (1-5)</option>
-            <option>Senior (6-Matric)</option>
+            <option value="" disabled selected>Choose Class</option>
+            <option>Junior Wing</option>
+            <option>Primary Wing</option>
+            <option>Senior Wing</option>
         </select>
-        
-        <label>Mobile Number</label>
-        <input type="tel" id="phone" placeholder="03xx-xxxxxxx">
-        
-        <button class="submit-btn" onclick="sendToWhatsApp()">Submit via WhatsApp 💬</button>
+        <input type="tel" id="phone" placeholder="Mobile Number">
+        <button class="submit-btn" onclick="sendToWhatsApp()">Submit via WhatsApp <i class="fab fa-whatsapp"></i></button>
     </div>
 </section>
 
-<footer class="footer-card">
+<footer>
     <h2>Contact Us 📞</h2>
-    <div class="contact-item">
-        <i class="fas fa-phone-alt"></i>
-        <span>Admission Office: <a href="tel:03009700244">0300-9700244</a></span>
-    </div>
-    <div class="contact-item">
-        <i class="fas fa-user-tie"></i>
-        <span>Principal Office: <a href="tel:03281178981">0328-1178981</a></span>
-    </div>
-    <div class="contact-item">
-        <i class="fas fa-tty"></i>
-        <span>PTCL: <a href="tel:04235214042">042-35214042</a></span>
-    </div>
-    <div class="contact-item">
-        <i class="fas fa-envelope"></i>
-        <span><a href="mailto:alliedschoolhumayelcampus786@gmail.com">alliedschoolhumayelcampus786@gmail.com</a></span>
-    </div>
-
+    <div class="contact-info"><i class="fas fa-phone"></i> Admission: <a href="tel:03009700244">0300-9700244</a></div>
+    <div class="contact-info"><i class="fas fa-phone"></i> Principal: <a href="tel:03281178981">0328-1178981</a></div>
+    <div class="contact-info"><i class="fas fa-tty"></i> PTCL: <a href="tel:04235214042">042-35214042</a></div>
+    <div class="contact-info"><i class="fas fa-envelope"></i> <a href="mailto:alliedschoolhumayelcampus786@gmail.com">alliedschoolhumayelcampus786@gmail.com</a></div>
+    
     <div style="margin-top: 30px;">
-        <a href="https://www.facebook.com/profile.php?id=100090903850857" target="_blank" class="social-link">
-            <i class="fab fa-facebook-square"></i>
+        <a href="https://www.facebook.com/profile.php?id=100090903850857" target="_blank" class="social-icon">
+            <i class="fab fa-facebook"></i>
         </a>
-        <p style="font-size: 0.9em; margin-top: 10px;">Follow us on Facebook</p>
     </div>
 
-    <div class="map-frame">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.447545934149!2d74.3149!3d31.4571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190146dadb0fdf%3A0x2fa59fa2bfbdb2c8!2sAllied%20School%20Humayel%20Campus!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.2082697816157!2d74.3059!3d31.4635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDI3JzQ4LjYiTiA3NMKwMTgnMjEuMiJF!5e0!3m2!1sen!2spk!4v1700000000000" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
-    <p style="margin-top: 40px; font-size: 0.8em; opacity: 0.7;">📍 20/10-B1, Akbar Chowk, Township Lahore<br>© 2026 Allied School – Humayel Campus</p>
+    <p style="margin-top: 30px; opacity: 0.7;">📍 20/10-B1, Akbar Chowk, Township Lahore<br>© 2026 Allied School Humayel Campus</p>
 </footer>
 
 <script>
-function sendToWhatsApp(){
-    const name = document.getElementById('stdName').value;
-    const father = document.getElementById('fName').value;
-    const cls = document.getElementById('className').value;
-    const phone = document.getElementById('phone').value;
+    function openGallery() { document.getElementById('galleryModal').style.display = "block"; }
+    function closeGallery() { document.getElementById('galleryModal').style.display = "none"; }
     
-    if(!name || !father || !phone || cls === ""){
-        alert("Please fill all fields correctly.");
-        return;
+    function sendToWhatsApp(){
+        let name = document.getElementById('stdName').value;
+        let father = document.getElementById('fName').value;
+        let cls = document.getElementById('className').value;
+        let phone = document.getElementById('phone').value;
+        if(!name || !phone) { alert("Please fill the form"); return; }
+        let msg = `*Admission Inquiry*%0AName: ${name}%0AFather: ${father}%0AClass: ${cls}%0APhone: ${phone}`;
+        window.open(`https://wa.me/923009700244?text=${msg}`, '_blank');
     }
-    
-    const message = `*New Admission Inquiry (Humayel Campus)*%0A%0A` +
-                  `*Student:* ${name}%0A` +
-                  `*Father:* ${father}%0A` +
-                  `*Class:* ${cls}%0A` +
-                  `*Phone:* ${phone}`;
-    
-    window.open(`https://wa.me/923009700244?text=${message}`, '_blank');
-}
 </script>
 
 </body>
